@@ -19,6 +19,12 @@ public class InsertValues {
 			stm.executeUpdate(query);
 			query="insert into student values(150030897,'Teki Kundana',9.2)";
 			stm.executeUpdate(query);
+			query="insert into student values(170030987,'Ram',7.2)";
+			stm.executeUpdate(query);
+			query="insert into student values(170040001,'Lakshman',9.2)";
+			stm.executeUpdate(query);
+			query="insert into student values(170040400,'Janaki',9.2)";
+			stm.executeUpdate(query);
 			System.out.println("inserted into table");
 			stm.close();
 			conn.close();
