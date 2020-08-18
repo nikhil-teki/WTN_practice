@@ -2,26 +2,25 @@ package com.wipro.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class InsertValues {
+public class PrintTableValues {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Connecting to the Oracle Data Base");
+		System.out.println("Connecting to the Oracle Database");
 		try
 		{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","AP@07ca1638");
 			System.out.println("Connected");
 			Statement stm=conn.createStatement();
-			String query="insert into student values(170040857,'Teki Nikhil',9.17)";
-			stm.executeUpdate(query);
-			query="insert into student values(150030897,'Teki Kundana',9.2)";
-			stm.executeUpdate(query);
-			System.out.println("inserted into table");
-			stm.close();
-			conn.close();
+			String query="select * from student";
+			ResultSet rs=stm.executeQuery(query);
+			System.out.println("ID\tName\tCGPA");
+			while(rs.next())
+				System.out.println(rs.getString(1)+"\t"+rs.getString(2)+"\t"+rs.getFloat(3));
 		}
 		catch(Exception e)
 		{
